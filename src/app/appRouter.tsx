@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { routes } from "@shared/assets/router/routes";
+import { routes } from "@/shared/router/routes";
 import { AdList } from "@/pages/adList/";
 import { MainLayout } from "@/widgets/mainLayout";
 

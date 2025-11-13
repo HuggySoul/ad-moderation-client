@@ -149,6 +149,12 @@ export function getThemeConfig(mode: ThemeMode): ThemeConfig {
     fontSizeSM: 12,
     fontSizeLG: 16,
 
+    fontSizeHeading1: 28,
+    fontSizeHeading2: 24,
+    fontSizeHeading3: 20,
+    fontSizeHeading4: 18,
+    fontSizeHeading5: 16,
+
     // Тени (для карточек/модалок)
     boxShadowSecondary: isDark
       ? "0 18px 40px rgba(0, 0, 0, 0.9)"

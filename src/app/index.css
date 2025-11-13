@@ -2,8 +2,13 @@
   --button-z-index: 10;
   --popup-z-index: 20;
   --modal-z-index: 30;
-}
 
+  --app-font-xl: 24px;
+  --app-font-lg: 20px;
+  --app-font-md: 18px;
+  --app-font-sm: 14px;
+  --app-font-xs: 12px;
+}
 /* Обычный Montserrat (от 100 до 900) */
 @font-face {
   font-family: "Montserrat";

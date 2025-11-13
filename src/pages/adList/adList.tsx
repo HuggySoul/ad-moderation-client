@@ -1,11 +1,11 @@
 import cls from "./adList.module.css";
-import { Card } from "antd";
+import { AdCardList } from "@/widgets/adCardList";
 
 /** Корневой компонент страницы со списком объявлений */
 export function AdList() {
   return (
     <div className={cls.AdList}>
-      <Card>Карточка </Card>
+      <AdCardList />
     </div>
   );
 }

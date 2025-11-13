@@ -1,0 +1,24 @@
+.mainLayout {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  width: 100%;
+  border-bottom: 2px solid var(--ant-color-border);
+  box-shadow: var(--ant-box-shadow-drawer-down);
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 30px;
+}

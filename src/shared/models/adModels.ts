@@ -1,4 +1,4 @@
-import type { AdStatus, ModerationAction } from "../types";
+import type { AdStatus, ModerationAction, ModerationDecisionReason } from "../types";
 
 export const STATUS_LABELS: Record<AdStatus, string> = {
   pending: "на модерации",
@@ -36,3 +36,12 @@ export const getActionLabel = (action: ModerationAction): string => {
       return action;
   }
 };
+
+export const MODERATION_REASONS: { label: string; value: ModerationDecisionReason }[] = [
+  { label: "Запрещенный товар", value: "Запрещенный товар" },
+  { label: "Неверная категория", value: "Неверная категория" },
+  { label: "Некорректное описание", value: "Некорректное описание" },
+  { label: "Проблемы с фото", value: "Проблемы с фото" },
+  { label: "Подозрение на мошенничество", value: "Подозрение на мошенничество" },
+  { label: "Другое", value: "Другое" },
+];

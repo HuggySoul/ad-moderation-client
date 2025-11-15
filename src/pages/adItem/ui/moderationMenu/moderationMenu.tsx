@@ -1,5 +1,5 @@
 import cls from "./moderationMenu.module.css";
-import { Card, Button } from "antd";
+import { Card, Button, Popover } from "antd";
 import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
@@ -8,31 +8,90 @@ import {
   CloseOutlined,
   UndoOutlined,
 } from "@ant-design/icons";
+import { useApproveAdMutation } from "../../api/moderateAd";
+import { ModerationReasonForm } from "./moderationReasonForm";
+import { usePopoverControl } from "./usePopoverControl";
+import { useNavigate } from "react-router-dom";
+
+interface IProps {
+  id: number;
+}
 
 /** Меню модератора */
-export function ModerationMenu() {
+export function ModerationMenu({ id }: IProps) {
+  const [approveAd, { isLoading: isApproving }] = useApproveAdMutation();
+
+  const navigate = useNavigate();
+
+  const {
+    isRejectPopoverOpen,
+    isRequestChangesPopoverOpen,
+    handleOpenRejectChange,
+    handleOpenRequestChangesChange,
+    handleCloseAll,
+  } = usePopoverControl();
+
+  const handleApprove = async () => {
+    try {
+      await approveAd({ id }).unwrap();
+    } catch (error: unknown) {
+      console.error("Ошибка при одобрении:", error);
+    }
+  };
+
   return (
     <Card className={cls.menuCard}>
       <div className={cls.moderationMenu}>
         <div className={cls.centerBtns}>
           <Button
+            onClick={handleApprove}
+            loading={isApproving}
             className={`${cls.decideBtn} ${cls.approve}`}
             icon={<CheckCircleOutlined />}
           >
             <span className={cls.decideText}>Одобрить</span>
           </Button>
 
-          <Button className={`${cls.decideBtn} ${cls.reject}`} icon={<CloseOutlined />}>
-            <span className={cls.decideText}>Отклонить</span>
-          </Button>
+          <Popover
+            title="Отклонение"
+            trigger="click"
+            placement="top"
+            arrow={false}
+            open={isRejectPopoverOpen}
+            onOpenChange={handleOpenRejectChange}
+            content={
+              <ModerationReasonForm id={id} mode="reject" onSuccess={handleCloseAll} />
+            }
+          >
+            <Button className={`${cls.decideBtn} ${cls.reject}`} icon={<CloseOutlined />}>
+              <span className={cls.decideText}>Отклонить</span>
+            </Button>
+          </Popover>
 
-          <Button className={`${cls.decideBtn} ${cls.change}`} icon={<UndoOutlined />}>
-            <span className={cls.decideText}>Доработка</span>
-          </Button>
+          <Popover
+            title="Доработка"
+            trigger="click"
+            placement="top"
+            arrow={false}
+            open={isRequestChangesPopoverOpen}
+            onOpenChange={handleOpenRequestChangesChange}
+            content={
+              <ModerationReasonForm
+                id={id}
+                mode="requestChanges"
+                onSuccess={handleCloseAll}
+              />
+            }
+          >
+            <Button className={`${cls.decideBtn} ${cls.change}`} icon={<UndoOutlined />}>
+              <span className={cls.decideText}>Доработка</span>
+            </Button>
+          </Popover>
         </div>
 
         <div className={cls.rightBtns}>
           <Button
+            onClick={() => navigate(`/list`)}
             className={`${cls.navBtn} ${cls.navBack}`}
             icon={<UnorderedListOutlined />}
           >

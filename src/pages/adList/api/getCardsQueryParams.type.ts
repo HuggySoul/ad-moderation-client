@@ -1,4 +1,5 @@
-import type { AdStatus, SortOrder, AdsSortBy } from "@/shared/types";
+import type { AdStatus } from "@/shared/types";
+import type { SortOrder, AdsSortBy } from "../model/types/sort.type";
 
 /** Query-параметры для получения списка объявлений */
 export interface AdsListQueryParams {

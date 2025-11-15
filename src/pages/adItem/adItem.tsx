@@ -107,7 +107,7 @@ export function AdItem() {
         />
       </Card>
       <ModerationHistory moderationHistory={adItem.moderationHistory} />
-      <ModerationMenu />
+      <ModerationMenu id={numericId} />
     </div>
   );
 }

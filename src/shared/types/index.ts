@@ -6,4 +6,5 @@ export type {
   SellerDto,
   ModerationAction,
   ModerationHistoryDto,
+  ModerationDecisionReason,
 } from "./advertisement.type";

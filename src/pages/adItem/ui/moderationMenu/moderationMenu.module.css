@@ -81,6 +81,45 @@
   display: inline;
 }
 
+.reasonForm {
+  min-width: 260px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reasonItem {
+  margin-bottom: 8px;
+}
+
+.reasonsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reasonRadio {
+  display: flex;
+  align-items: center;
+}
+
+.customReasonItem {
+  margin-bottom: 8px;
+}
+
+.customReasonInput {
+  width: 100%;
+}
+
+.submitItem {
+  margin-bottom: 0;
+}
+
+.submitBtn {
+  font-weight: 500;
+}
+
 @media (max-width: 1020px) {
   .moderationMenu {
     justify-content: space-between;

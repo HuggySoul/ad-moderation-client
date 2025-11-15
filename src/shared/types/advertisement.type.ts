@@ -61,3 +61,11 @@ export type ModerationAction = "approved" | "rejected" | "requestChanges";
 
 /** Период статистики */
 export type StatsPeriod = "today" | "week" | "month" | "custom";
+
+export type ModerationDecisionReason =
+  | "Запрещенный товар"
+  | "Неверная категория"
+  | "Некорректное описание"
+  | "Проблемы с фото"
+  | "Подозрение на мошенничество"
+  | "Другое";

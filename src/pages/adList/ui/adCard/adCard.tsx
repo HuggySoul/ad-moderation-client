@@ -4,6 +4,7 @@ import { Card, Image, Tag, Typography, Button } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { formatPrice } from "@/shared/lib";
 import { getStatus, formatDate } from "./formatHelpers";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   advertisement: AdvertisementViewCard;
@@ -11,6 +12,7 @@ interface IProps {
 
 /** Карточка объявления */
 export function AdCard({ advertisement }: IProps) {
+  const navigate = useNavigate();
   const { day, month, year, hour, minute } = formatDate(advertisement.createdAt);
   const adStatus = getStatus(advertisement.status);
   const isShowPriority =
@@ -39,6 +41,7 @@ export function AdCard({ advertisement }: IProps) {
                 {advertisement.category}
               </Typography.Text>
               <Button
+                onClick={() => navigate(`/item/${advertisement.id}`)}
                 title="Перейти на страницу объявления"
                 className={cls.openBtn}
                 icon={<ArrowRightOutlined />}

@@ -1,0 +1,1 @@
+export { AdItem } from "./adItem";

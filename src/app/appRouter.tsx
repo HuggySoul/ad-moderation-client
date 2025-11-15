@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { routes } from "@/shared/router/routes";
 import { AdList } from "@/pages/adList/";
+import { AdItem } from "@/pages/adItem";
 import { MainLayout } from "@/widgets/mainLayout";
 import { Result } from "antd";
 export const AppRouter = () => {
@@ -15,6 +16,7 @@ export const AppRouter = () => {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path={routes.adList.path} element={<AdList />} />
+          <Route path={routes.adItem.path} element={<AdItem />} />
         </Route>
 
         <Route path="/" element={<Navigate to={routes.adList.path} replace />} />

@@ -3,8 +3,8 @@ export const routes = {
     path: "/list",
   },
 
-  ad: {
-    path: "/item",
+  adItem: {
+    path: "/item/:id",
   },
 
   stats: {

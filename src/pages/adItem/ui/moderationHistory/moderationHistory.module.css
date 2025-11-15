@@ -1,0 +1,64 @@
+.moderationCard {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.moderationCard :global(.ant-card-head) {
+  background-color: var(--ant-color-warning-bg);
+  color: var(--ant-color-text-heading);
+  border-color: var(--ant-color-warning-border);
+}
+
+.moderationCard :global(.ant-card-head-title) {
+  color: inherit;
+}
+
+.moderationCard :global(.ant-card-body) {
+  background-color: var(--ant-color-warning-bg);
+  color: var(--ant-color-text);
+  border-color: var(--ant-color-warning-border);
+}
+
+.moderationEmpty {
+  font-size: var(--app-font-sm);
+  opacity: 0.9;
+}
+
+.moderationList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moderationItem {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.moderationItemHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.moderationModerator {
+  font-size: var(--app-font-sm);
+  font-weight: 600;
+}
+
+.moderationDate {
+  font-size: var(--app-font-xs);
+  opacity: 0.9;
+}
+
+.moderationRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: var(--app-font-xs);
+}
+
+.moderationLabel {
+  font-weight: 500;
+}

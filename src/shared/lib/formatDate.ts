@@ -1,22 +1,3 @@
-import type { AdStatus } from "@/shared/types";
-
-export const getStatus = (status: AdStatus) => {
-  switch (status) {
-    case "approved":
-      return { color: "success", text: "одобрено" };
-    case "rejected":
-      return { color: "error", text: "отклонено" };
-    case "pending":
-      return { color: "warning", text: "на модерации" };
-    case "draft":
-      return { color: "default", text: "на доработке" };
-    default: {
-      const _: never = status;
-      return _;
-    }
-  }
-};
-
 export const formatDate = (isoDate: string) => {
   const date = new Date(isoDate);
 

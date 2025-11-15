@@ -3,6 +3,7 @@ export type {
   AdStatus,
   AdPriority,
   StatsPeriod,
-  SortOrder,
-  AdsSortBy,
+  SellerDto,
+  ModerationAction,
+  ModerationHistoryDto,
 } from "./advertisement.type";

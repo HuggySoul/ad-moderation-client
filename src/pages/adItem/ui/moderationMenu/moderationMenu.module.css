@@ -1,0 +1,97 @@
+.menuCard {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+}
+
+.moderationMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Центральные кнопки действий */
+.centerBtns {
+  display: flex;
+  gap: 10px;
+}
+
+.decideBtn {
+  font-weight: 600;
+  border-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* фон/цвет по статусам */
+.approve {
+  background-color: var(--ant-color-success-bg);
+  color: var(--ant-color-success);
+}
+
+.approve:hover,
+.approve:focus {
+  background-color: var(--ant-color-success-bg);
+  filter: brightness(0.98);
+}
+
+.reject {
+  background-color: var(--ant-color-error-bg);
+  color: var(--ant-color-error);
+}
+
+.reject:hover,
+.reject:focus {
+  background-color: var(--ant-color-error-bg);
+  filter: brightness(0.98);
+}
+
+.change {
+  background-color: var(--ant-color-warning-bg);
+  color: var(--ant-color-warning);
+}
+
+.change:hover,
+.change:focus {
+  background-color: var(--ant-color-warning-bg);
+  filter: brightness(0.98);
+}
+
+.decideText {
+  display: inline;
+}
+
+.rightBtns {
+  display: flex;
+  gap: 10px;
+}
+
+.navBtn {
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navText {
+  display: inline;
+}
+
+@media (max-width: 1020px) {
+  .moderationMenu {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .decideText,
+  .navText {
+    display: none;
+  }
+}

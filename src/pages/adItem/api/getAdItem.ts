@@ -3,7 +3,7 @@ import type { AdvertisementDto } from "@/shared/types";
 
 export const adItemApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getAdItem: build.query<{ adItem: AdvertisementDto }, { id: number }>({
+    getAdItem: build.query<AdvertisementDto, { id: number }>({
       query: (params) => ({
         url: `/ads/${params.id}`,
       }),

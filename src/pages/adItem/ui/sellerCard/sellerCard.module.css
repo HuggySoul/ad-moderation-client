@@ -1,0 +1,34 @@
+.sellerCard {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-size: var(--app-font-md);
+  font-weight: 600;
+}
+
+.idTag {
+  font-size: var(--app-font-xs);
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label {
+  font-size: var(--app-font-sm);
+}
+
+.ratingValue {
+  font-size: var(--app-font-sm);
+  opacity: 0.8;
+}

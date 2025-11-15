@@ -1,1 +1,1 @@
-export { STATUS_LABELS } from "./adModels";
+export { STATUS_LABELS, getStatusLabelStyleByValue } from "./adModels";

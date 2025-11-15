@@ -3,7 +3,8 @@ import type { AdvertisementViewCard } from "../../model/types/adCard.type";
 import { Card, Image, Tag, Typography, Button } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { formatPrice } from "@/shared/lib";
-import { getStatus, formatDate } from "./formatHelpers";
+import { formatDate } from "@shared/lib/formatDate";
+import { getStatusLabelStyleByValue } from "@shared/models/";
 import { useNavigate } from "react-router-dom";
 
 interface IProps {
@@ -14,9 +15,8 @@ interface IProps {
 export function AdCard({ advertisement }: IProps) {
   const navigate = useNavigate();
   const { day, month, year, hour, minute } = formatDate(advertisement.createdAt);
-  const adStatus = getStatus(advertisement.status);
-  const isShowPriority =
-    advertisement.priority === "urgent" && advertisement.status === "pending";
+  const adStatus = getStatusLabelStyleByValue(advertisement.status);
+  const isShowPriority = advertisement.priority === "urgent";
 
   return (
     <Card>
@@ -31,7 +31,6 @@ export function AdCard({ advertisement }: IProps) {
           <div className={cls.header}>
             <div className={cls.topInfo}>
               <Typography.Text strong className={cls.title}>
-                {/* TODO: Ограничить длину одной строкой */}
                 {advertisement.title}
               </Typography.Text>
               <Typography.Text strong className={cls.price}>

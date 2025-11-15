@@ -49,11 +49,11 @@ export function getThemeConfig(mode: ThemeMode): ThemeConfig {
 
   /** Палитра для тёмной темы */
   const darkPalette = {
-    primary: "#e5e5e5",
-    primaryHover: "#fafafa",
-    primaryActive: "#ffffff",
-    primaryBg: "rgba(212, 212, 212, 0.12)",
-    primaryBgHover: "rgba(229, 229, 229, 0.18)",
+    primary: "#1E293B",
+    primaryHover: "#334155",
+    primaryActive: "#747784ff",
+    primaryBg: "rgba(30, 41, 59, 0.22)",
+    primaryBgHover: "rgba(51, 65, 85, 0.32)",
 
     bgBase: "#050505",
     bgLayout: "#050505",

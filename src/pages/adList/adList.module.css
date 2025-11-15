@@ -1,0 +1,32 @@
+.adCardList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cardListMain {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.adCardListHeader {
+  display: flex;
+  gap: 15px;
+}
+
+.headerBtns {
+  display: flex;
+  gap: 10px;
+}
+
+.adCardListPagination {
+  margin: 10px 0;
+}
+
+@media (max-width: 740px) {
+  .adCardListHeader {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

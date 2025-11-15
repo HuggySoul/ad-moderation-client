@@ -1,5 +1,5 @@
 import cls from "./adCard.module.css";
-import type { AdvertisementViewCard } from "../../model/adCard.type";
+import type { AdvertisementViewCard } from "../../model/types/adCard.type";
 import { Card, Image, Tag, Typography, Button } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { formatPrice } from "@/shared/lib";
@@ -29,6 +29,7 @@ export function AdCard({ advertisement }: IProps) {
           <div className={cls.header}>
             <div className={cls.topInfo}>
               <Typography.Text strong className={cls.title}>
+                {/* TODO: Ограничить длину одной строкой */}
                 {advertisement.title}
               </Typography.Text>
               <Typography.Text strong className={cls.price}>

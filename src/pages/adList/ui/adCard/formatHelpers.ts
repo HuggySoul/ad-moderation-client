@@ -35,10 +35,10 @@ export const formatDate = (isoDate: string) => {
   }
 
   return {
-    day: `${day}`,
+    day: `${day}`.padStart(2, "0"),
     month: `${month}`.padStart(2, "0"),
     year: `${year}`.slice(2),
     hour: `${hour}`,
-    minute: `${minute}`,
+    minute: `${minute}`.padStart(2, "0"),
   };
 };

@@ -1,3 +1,9 @@
 .themeSwitcher {
   border: 1px solid var(--ant-color-border);
 }
+
+@media (max-width: 465px) {
+  .content {
+    display: none;
+  }
+}

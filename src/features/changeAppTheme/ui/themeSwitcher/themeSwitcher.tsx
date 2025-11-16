@@ -14,7 +14,7 @@ export function ThemeSwitcher() {
       onClick={toggle}
       icon={isDark ? <SunFilled /> : <MoonFilled />}
     >
-      {isDark ? "Светлая" : "Тёмная"}
+      <span className={cls.content}>{isDark ? "Светлая" : "Тёмная"}</span>
     </Button>
   );
 }

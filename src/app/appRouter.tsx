@@ -8,6 +8,7 @@ import {
 import { routes } from "@/shared/router/routes";
 import { AdList } from "@/pages/adList/";
 import { AdItem } from "@/pages/adItem";
+import { Stats } from "@/pages/stats/stats";
 import { MainLayout } from "@/widgets/mainLayout";
 import { Result } from "antd";
 export const AppRouter = () => {
@@ -17,6 +18,7 @@ export const AppRouter = () => {
         <Route element={<MainLayout />}>
           <Route path={routes.adList.path} element={<AdList />} />
           <Route path={routes.adItem.path} element={<AdItem />} />
+          <Route path={routes.stats.path} element={<Stats />} />
         </Route>
 
         <Route path="/" element={<Navigate to={routes.adList.path} replace />} />

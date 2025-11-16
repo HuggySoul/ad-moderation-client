@@ -59,9 +59,6 @@ export interface ModerationHistoryDto {
 /** Действие модератора в истории */
 export type ModerationAction = "approved" | "rejected" | "requestChanges";
 
-/** Период статистики */
-export type StatsPeriod = "today" | "week" | "month" | "custom";
-
 export type ModerationDecisionReason =
   | "Запрещенный товар"
   | "Неверная категория"

@@ -23,6 +23,15 @@
   line-height: 1.2;
 }
 
+.rightBtns {
+  display: flex;
+  gap: 5px;
+}
+
+.statsBtn {
+  border: 1px solid var(--ant-color-border);
+}
+
 .main {
   width: 100%;
   max-width: 1400px;
@@ -37,5 +46,11 @@
 
   .title {
     font-size: var(--app-font-lg);
+  }
+}
+
+@media (max-width: 390px) {
+  .statsContent {
+    display: none;
   }
 }

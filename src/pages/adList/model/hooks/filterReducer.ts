@@ -17,7 +17,7 @@ export function filtersReducer(
     case "SET_CATEGORY":
       return {
         ...state,
-        categoryID: action.payload ? action.payload : undefined,
+        categoryID: action.payload ?? undefined,
       };
 
     case "SET_PRICE_RANGE":

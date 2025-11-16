@@ -1,0 +1,98 @@
+.stats {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 10px;
+  background-color: var(--ant-color-bg-base);
+  padding: 10px;
+  border-radius: 15px;
+  width: fit-content;
+  z-index: var(--popup-z-index);
+  margin: 0 auto;
+  border: 1px solid var(--ant-color-border);
+}
+
+.periodGroup {
+}
+
+.rangePicker {
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  height: 100%;
+}
+
+.approve {
+  background-color: var(--ant-color-success-bg);
+  color: var(--ant-color-success);
+}
+
+.reject {
+  background-color: var(--ant-color-error-bg);
+  color: var(--ant-color-error);
+}
+
+.warning {
+  background-color: var(--ant-color-warning-bg);
+  color: var(--ant-color-warning);
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 110px;
+}
+
+.metricLabel {
+  font-size: var(--app-font-md);
+  color: var(--ant-colorTextSecondary);
+  line-height: 1.2;
+}
+
+.metricValue {
+  font-size: var(--app-font-xxl);
+  font-weight: 600;
+  color: var(--ant-colorTextHeading);
+}
+
+/* увеличиваем вкладки Radio.Group */
+.periodGroup :global(.ant-radio-button-wrapper) {
+  font-size: var(--app-font-md);
+  padding-inline: 16px;
+}
+
+@media (max-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .periodGroup :global(.ant-radio-button-wrapper) {
+    font-size: var(--app-font-sm);
+    padding-inline: 10px;
+  }
+}
+
+@media (max-width: 468px) {
+  .periodGroup :global(.ant-radio-button-wrapper) {
+    font-size: var(--app-font-xs);
+    padding-inline: 5px;
+  }
+}

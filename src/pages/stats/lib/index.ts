@@ -1,0 +1,1 @@
+export { getChartPalette } from "./chartConfig";

@@ -1,0 +1,23 @@
+.chartBody {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chartTitle {
+  font-size: var(--app-font-lg);
+  font-weight: 600;
+  color: var(--ant-colorTextHeading);
+}
+
+.chartPlaceholder {
+  text-align: center;
+  font-size: var(--app-font-md);
+  color: var(--ant-colorTextSecondary);
+}

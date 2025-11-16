@@ -4,7 +4,7 @@ export const STATS_PERIOD_OPTIONS: { label: string; value: StatsPeriod }[] = [
   { label: "Сегодня", value: "today" },
   { label: "Эта неделя", value: "week" },
   { label: "Этот месяц", value: "month" },
-  { label: "Произвольный период", value: "custom" },
+  { label: "Произвольно", value: "custom" },
 ];
 
 export const STATS_DECISION_OPTIONS: {

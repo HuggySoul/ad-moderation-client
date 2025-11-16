@@ -9,6 +9,7 @@ import { Search } from "./ui/search/search";
 import { Filters } from "./ui/filters/filters";
 import { useActiveFilters } from "./model/hooks/useActiveFilter";
 import { Sort } from "./ui/sort/sort";
+import { useNavigate } from "react-router-dom";
 import type { SortConfig } from "./model/types/sort.type";
 
 /** Максимальное количество объявлений на одной странице */
@@ -24,6 +25,7 @@ export function AdList() {
     useActiveFilters();
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const {
     data: res,
@@ -85,9 +87,22 @@ export function AdList() {
       <ul ref={listRef} className={cls.adCardList}>
         {!isSkeletonVisible ? (
           <>
-            {ads.map((ad) => (
+            {ads.map((ad, index) => (
               <li key={ad.id}>
-                <AdCard advertisement={ad} />
+                <AdCard
+                  key={ad.id}
+                  advertisement={ad}
+                  onOpen={() =>
+                    navigate(`/item/${ad.id}`, {
+                      state: {
+                        fromList: true,
+                        page,
+                        ids: ads.map((item) => item.id),
+                        index,
+                      },
+                    })
+                  }
+                />
               </li>
             ))}
           </>

@@ -15,10 +15,14 @@ import { useNavigate } from "react-router-dom";
 
 interface IProps {
   id: number;
+  onGoPrev: () => void;
+  onGoNext: () => void;
+  canGoPrev: boolean;
+  canGoNext: boolean;
 }
 
 /** Меню модератора */
-export function ModerationMenu({ id }: IProps) {
+export function ModerationMenu({ id, onGoPrev, onGoNext, canGoPrev, canGoNext }: IProps) {
   const [approveAd, { isLoading: isApproving }] = useApproveAdMutation();
 
   const navigate = useNavigate();
@@ -98,11 +102,18 @@ export function ModerationMenu({ id }: IProps) {
             <span className={cls.navText}>Назад к списку</span>
           </Button>
 
-          <Button className={`${cls.navBtn} ${cls.navPrev}`} icon={<ArrowLeftOutlined />}>
+          <Button
+            onClick={onGoPrev}
+            disabled={!onGoPrev || !canGoPrev}
+            className={`${cls.navBtn} ${cls.navPrev}`}
+            icon={<ArrowLeftOutlined />}
+          >
             <span className={cls.navText}>Предыдущее</span>
           </Button>
 
           <Button
+            onClick={onGoNext}
+            disabled={!onGoNext || !canGoNext}
             iconPosition="end"
             className={`${cls.navBtn} ${cls.navNext}`}
             icon={<ArrowRightOutlined />}

@@ -14,7 +14,6 @@ export type {
   ActivityPointDto,
   ActivityChartDto,
   GetActivityChartParams,
-  ActivityPointByDecision,
   DecisionsDistributionDto,
   GetDecisionsChartParams,
   DecisionsDistributionMap,
@@ -24,7 +23,6 @@ export type {
   ModeratorDto,
   ModeratorStatsDto,
   StatsPeriodFilter,
-  IsoDateString,
   StatsPeriod,
   StatsDecisionKey,
 } from "./stats.type";

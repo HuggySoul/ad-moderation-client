@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useGetAdItemQuery } from "./api/getAdItem";
 import { Carousel, Image, Result, Skeleton, Card, Typography, Table } from "antd";
 import { CloseSquareFilled } from "@ant-design/icons";
@@ -8,6 +8,13 @@ import { AdHeader } from "./ui/adHeader/adHeader";
 import { ModerationMenu } from "./ui/moderationMenu/moderationMenu";
 import { ModerationHistory } from "./ui/moderationHistory/moderationHistory";
 import cls from "./adItem.module.css";
+
+interface AdItemLocationState {
+  fromList?: boolean;
+  page?: number;
+  ids?: number[];
+  index?: number;
+}
 
 /** Предикат для сужения типа */
 const adItemNotUndefined = (
@@ -19,7 +26,23 @@ const adItemNotUndefined = (
 /** Подробная информация об объявлении */
 export function AdItem() {
   const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const numericId = Number(id);
+
+  const navigationState = (location.state || {}) as AdItemLocationState;
+  const ids = navigationState.ids;
+
+  const currentIndex =
+    Array.isArray(ids) && !Number.isNaN(numericId)
+      ? ids.findIndex((itemId) => itemId === numericId)
+      : -1;
+
+  const canGoPrev = Array.isArray(ids) && currentIndex > 0;
+  const canGoNext =
+    Array.isArray(ids) && currentIndex > -1 && currentIndex < ids.length - 1;
+
   const {
     data: adItem,
     isLoading,
@@ -27,6 +50,30 @@ export function AdItem() {
   } = useGetAdItemQuery({
     id: Number.isNaN(numericId) ? 0 : numericId,
   });
+
+  const handleGoPrev = () => {
+    if (!canGoPrev || !ids) return;
+    const prevId = ids[currentIndex - 1];
+
+    navigate(`/item/${prevId}`, {
+      state: {
+        ...navigationState,
+        ids,
+      },
+    });
+  };
+
+  const handleGoNext = () => {
+    if (!canGoNext || !ids) return;
+    const nextId = ids[currentIndex + 1];
+
+    navigate(`/item/${nextId}`, {
+      state: {
+        ...navigationState,
+        ids,
+      },
+    });
+  };
 
   if (isLoading || isFetching) {
     return (
@@ -106,8 +153,16 @@ export function AdItem() {
           dataSource={characteristicsData}
         />
       </Card>
+
       <ModerationHistory moderationHistory={adItem.moderationHistory} />
-      <ModerationMenu id={numericId} />
+
+      <ModerationMenu
+        id={numericId}
+        canGoPrev={canGoPrev}
+        canGoNext={canGoNext}
+        onGoPrev={handleGoPrev}
+        onGoNext={handleGoNext}
+      />
     </div>
   );
 }

@@ -5,15 +5,14 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import { formatPrice } from "@/shared/lib";
 import { formatDate } from "@shared/lib/formatDate";
 import { getStatusLabelStyleByValue } from "@shared/models/";
-import { useNavigate } from "react-router-dom";
 
 interface IProps {
   advertisement: AdvertisementViewCard;
+  onOpen: () => void;
 }
 
 /** Карточка объявления */
-export function AdCard({ advertisement }: IProps) {
-  const navigate = useNavigate();
+export function AdCard({ advertisement, onOpen }: IProps) {
   const { day, month, year, hour, minute } = formatDate(advertisement.createdAt);
   const adStatus = getStatusLabelStyleByValue(advertisement.status);
   const isShowPriority = advertisement.priority === "urgent";
@@ -40,7 +39,7 @@ export function AdCard({ advertisement }: IProps) {
                 {advertisement.category}
               </Typography.Text>
               <Button
-                onClick={() => navigate(`/item/${advertisement.id}`)}
+                onClick={onOpen}
                 title="Перейти на страницу объявления"
                 className={cls.openBtn}
                 icon={<ArrowRightOutlined />}

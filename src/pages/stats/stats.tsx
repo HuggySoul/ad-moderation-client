@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, Radio, DatePicker, Divider } from "antd";
+import { Card, Radio, DatePicker, Divider, Skeleton } from "antd";
 import type { RadioChangeEvent } from "antd";
 import cls from "./stats.module.css";
 import { useGetStatsSummaryQuery } from "./api/getStats";
@@ -24,7 +24,7 @@ export function Stats() {
     customRange
   );
 
-  const { data: summary, isLoading } = useGetStatsSummaryQuery(queryArg);
+  const { data: summary, isLoading, isFetching } = useGetStatsSummaryQuery(queryArg);
 
   const handlePeriodChange = (event: RadioChangeEvent) => {
     setPeriod(event.target.value as StatsPeriod);
@@ -70,7 +70,13 @@ export function Stats() {
         <Card className={cls.card}>
           <div className={cls.cardInner}>
             <div className={cls.metricLabel}>Всего проверено объявлений</div>
-            <div className={cls.metricValue}>{formatNumber(summary?.totalReviewed)}</div>
+            <div className={cls.metricValue}>
+              {isLoading || isFetching ? (
+                <Skeleton.Input active />
+              ) : (
+                formatNumber(summary?.totalReviewed)
+              )}
+            </div>
           </div>
         </Card>
 
@@ -80,7 +86,11 @@ export function Stats() {
               Среднее время на проверку одного объявления
             </div>
             <div className={cls.metricValue}>
-              {isLoading ? "—" : formatReviewTime(summary?.averageReviewTime)}
+              {isLoading || isFetching ? (
+                <Skeleton.Input active />
+              ) : (
+                formatReviewTime(summary?.averageReviewTime)
+              )}
             </div>
           </div>
         </Card>
@@ -89,7 +99,11 @@ export function Stats() {
           <div className={cls.cardInner}>
             <div className={cls.metricLabel}>Процент одобренных</div>
             <div className={cls.metricValue}>
-              {formatPercent(summary?.approvedPercentage)}
+              {isLoading || isFetching ? (
+                <Skeleton.Input active />
+              ) : (
+                formatPercent(summary?.approvedPercentage)
+              )}
             </div>
           </div>
         </Card>
@@ -98,7 +112,11 @@ export function Stats() {
           <div className={cls.cardInner}>
             <div className={cls.metricLabel}>Процент отклоненных</div>
             <div className={cls.metricValue}>
-              {formatPercent(summary?.rejectedPercentage)}
+              {isLoading || isFetching ? (
+                <Skeleton.Input active />
+              ) : (
+                formatPercent(summary?.rejectedPercentage)
+              )}
             </div>
           </div>
         </Card>

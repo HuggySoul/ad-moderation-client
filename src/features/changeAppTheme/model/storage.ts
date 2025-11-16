@@ -4,10 +4,15 @@ const KEY = "theme-mode"; // ключ в localStorage
 
 /** Получаем значение темы из local storage */
 export function readStoredMode(): ThemeMode {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
 
   const raw = window.localStorage.getItem(KEY);
-  return raw === "dark" ? "dark" : "light";
+
+  if (raw === "dark" || raw === "light") {
+    return raw as ThemeMode;
+  }
+
+  return "dark";
 }
 
 /** Сохраняем значение темы в local storage */

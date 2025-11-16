@@ -42,6 +42,7 @@ export function ModerationReasonForm({ id, mode, onSuccess }: ModerationReasonFo
           id,
           body: {
             reason: values.reason,
+            comment: trimmedCustomReason ?? "",
           },
         }).unwrap();
       } else {

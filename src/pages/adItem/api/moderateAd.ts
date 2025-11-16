@@ -3,6 +3,7 @@ import type { ModerationDecisionReason } from "@/shared/types";
 
 interface RejectBody {
   reason: ModerationDecisionReason;
+  comment: string;
 }
 
 interface RequestChangesBody {

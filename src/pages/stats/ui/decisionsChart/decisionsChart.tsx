@@ -36,6 +36,7 @@ function mapDecisionsToPieData(data?: DecisionsDistributionDto): PieDataItem[] {
   return items.filter((item) => item.value > 0);
 }
 
+/** Круговая диаграмма принятия решений */
 export const DecisionsChart = memo(function DecisionsChart(props: DecisionsChartProps) {
   const { filter } = props;
 

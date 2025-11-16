@@ -15,6 +15,7 @@ const { RangePicker } = DatePicker;
 
 type CustomRange = [string, string] | null;
 
+/** Страница со статистикой модератора */
 export function Stats() {
   const [period, setPeriod] = useState<StatsPeriod>("today");
   const [customRange, setCustomRange] = useState<CustomRange>(null);
@@ -123,15 +124,10 @@ export function Stats() {
       </div>
 
       <Divider />
-
       <ActivityChart filter={queryArg} />
-
       <Divider />
-
       <DecisionsChart filter={queryArg} />
-
       <Divider />
-
       <CategoriesChart filter={queryArg} />
     </div>
   );

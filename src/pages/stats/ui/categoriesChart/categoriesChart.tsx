@@ -20,16 +20,21 @@ interface CategoriesChartProps {
 const MAX_COLUMN_WIDTH = 45;
 
 function mapCategoriesToColumnData(data?: CategoriesChartDto): CategoryStatsPoint[] {
-  if (!data) {
+  if (!data) return [];
+
+  const dict = Object.entries(data);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  if (dict.filter(([_, count]) => count === 0).length === dict.length) {
     return [];
   }
 
-  return Object.entries(data).map(([categoryName, count]) => ({
+  return dict.map(([categoryName, count]) => ({
     categoryName,
     count,
   }));
 }
 
+/** Столбчатая диаграмма категорий  */
 export const CategoriesChart = memo(function CategoriesChart(
   props: CategoriesChartProps
 ) {

@@ -22,7 +22,13 @@ interface ColumnDataItem {
 }
 
 function mapActivityToColumnData(data?: ActivityChartDto): ColumnDataItem[] {
-  if (!data) {
+  if (
+    !data ||
+    data.filter(
+      (point) =>
+        point.approved === 0 && point.rejected === 0 && point.requestChanges === 0
+    ).length === data.length
+  ) {
     return [];
   }
 
@@ -47,6 +53,7 @@ function mapActivityToColumnData(data?: ActivityChartDto): ColumnDataItem[] {
 
 const MAX_COLUMN_WIDTH = 45;
 
+/** Столбчатая диаграмма активности модератора */
 export const ActivityChart = memo(function ActivityChart(props: ActivityChartProps) {
   const { filter } = props;
 
@@ -56,7 +63,6 @@ export const ActivityChart = memo(function ActivityChart(props: ActivityChartPro
   const { data, isLoading } = useGetActivityChartQuery(filter);
 
   const chartData = useMemo(() => mapActivityToColumnData(data), [data]);
-
   const config: ColumnConfig = {
     data: chartData,
     xField: "date",
